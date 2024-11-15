@@ -6,12 +6,18 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "${APP_PORT}:${APP_PORT}"
+      - '${APP_PORT}:${APP_PORT}'
+    environment:
+      - APP_PORT=${APP_PORT}
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - .env
 
   db:
     image: mysql:latest
     ports:
-      - "${DB_PORT}:3306"
+      - '${DB_PORT}:3306'
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
       - MYSQL_DATABASE=${DB_NAME}
@@ -19,6 +25,8 @@ services:
       - MYSQL_PASSWORD=${DB_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
+    env_file:
+      - .env
 
 volumes:
   db_data:
