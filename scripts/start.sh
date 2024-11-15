@@ -1,0 +1,1 @@
+docker-compose -p sample_nestjs --env-file .env -f docker-compose.yml up -d

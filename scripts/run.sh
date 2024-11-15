@@ -1,0 +1,1 @@
+docker exec -it sample_nestjs_api "$@"

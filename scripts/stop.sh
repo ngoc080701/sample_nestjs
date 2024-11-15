@@ -1,0 +1,1 @@
+docker stop $(docker ps -f "name=sample_nestjs" -a -q)
